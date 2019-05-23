@@ -6,8 +6,12 @@ public class Endereco {
     private String bairro;
     private String cidade;
 
-    public Endereco() {
-
+    public Endereco(String logadouro, int numero, String complemento, String bairro, String cidade) {
+        this.setLogadouro(logadouro);
+        this.setNumero(numero);
+        this.setComplemento(complemento);
+        this.setBairro(bairro);
+        this.setCidade(cidade);
     }
 
     public String getLogadouro() {
