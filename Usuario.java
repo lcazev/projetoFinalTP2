@@ -1,4 +1,4 @@
-
+package projFinal;
 public class Usuario {
     private String nome;
     private String email;
@@ -32,14 +32,15 @@ public class Usuario {
             // inserir outro email.
         }
     }
-
-    public String getEndereco(String endereco) {
-        return endereco;
-    }
-
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+    
+    public String getEndereco() {
+        return this.endereco.getEndCompleto();
+    }
+
+    
 
     public boolean emailValido(String email) {
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
