@@ -1,3 +1,4 @@
+package projFinal;
 
 public class Endereco {
     private String logadouro;
@@ -53,4 +54,10 @@ public class Endereco {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
+    
+    public String getEndCompleto() {
+    	return this.getLogadouro()+", numero: "+this.getNumero()+" complemento "+this.getComplemento()+
+    			", "+this.getBairro()+", "+this.getCidade();
+    }
+   
 }
