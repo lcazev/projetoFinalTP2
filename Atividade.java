@@ -3,6 +3,7 @@ package classes;
 public abstract class Atividade {
 	private String nome;
 	
+	public abstract boolean buscaLivro();
 	public abstract void doaLivro();
 	public abstract boolean entregaLivro();
 	public abstract void pedeLivro();
