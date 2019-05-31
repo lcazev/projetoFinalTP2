@@ -7,7 +7,7 @@ public class Sistema {
 	static Scanner entrada = new Scanner(System.in);
 
 	static ArrayList<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();// aqui temos que ter um arquivo de texto com
-																			// todas as bibs
+																				// todas as bibs
 
 	public static void pedirLivro() {
 		System.out.println("Bem-vindo(a)! Digite o titulo do livro que deseja pedir:");
@@ -20,11 +20,14 @@ public class Sistema {
 	public static void obterLivroPorTitulo(String livro) {
 		for (int i = 0; i < bibliotecas.size(); i++) {
 			if (bibliotecas.get(i).getCatalogo().contains(livro)) {
-				System.out.println("Biblioteca "+bibliotecas.get(i).getNome()+" no endereco ");//add endereco
+				System.out.println("Este livro está disponivel na biblioteca "+bibliotecas.get(i).getNome()+" no endereco "+
+						bibliotecas.get(i).getEndereco());//add endereco
 				//criar um metodo em endereco pra retornar uma string com o end completo
 				//e adicionar ao endereco da biblioteca acima
 			} else {
-				System.out.println("Livro nao encontrado. Redirecionando para pedidos"); }
+				System.out.println("Livro nao encontrado. Redirecionando para pedidos"); 
+				
+			}
 		}
 	}
 	public static void cadastrarUsuario() {
