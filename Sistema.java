@@ -1,13 +1,17 @@
-package projFinal;
+package classes;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Sistema {
-	static Scanner entrada = new Scanner(System.in);
+	public class Sistema {
+	public static Scanner entrada = new Scanner(System.in);
+	public static Bibliotecas bibliotecas = new Bibliotecas();
 
-	static ArrayList<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();// aqui temos que ter um arquivo de texto com
-																				// todas as bibs
+	public static void main(String[] args) {
+		MenuInt.apresentarMenu();
+	}
+}
 
 	public static void pedirLivro() {
 		System.out.println("Bem-vindo(a)! Digite o titulo do livro que deseja pedir:");
