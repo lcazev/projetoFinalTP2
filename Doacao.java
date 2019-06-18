@@ -7,8 +7,7 @@ public class Doacao extends Atividade{
 	
 	public void doaLivro(ArrayList<String> catalogo, String titulo) {
 		if(entregaLivro()) {
-			catalogo.add(titulo);
-			
+			catalogo.add(titulo);	
 		}
 	}
 
