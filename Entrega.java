@@ -19,6 +19,6 @@ public class Entrega {
 	public void realizarEntrega(Livro livro, Biblioteca biblioteca, Endereco endereco) {
 		// enviar mensagem ao entregador definido em setEntregador
 		// para que busque o livro no endereço mostrado
-		// e leve-o na biblioteca mostrada
+		// e leve-o no endereço da biblioteca mostrada
 	}
 }
