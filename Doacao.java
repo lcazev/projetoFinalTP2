@@ -39,7 +39,6 @@ public class Doacao extends Atividade {
 					}
 
 				}
-
 			}
 		}
 
@@ -47,7 +46,9 @@ public class Doacao extends Atividade {
 
 	public void doarLivro(Livro livro, Biblioteca biblioteca, String endereco) {
 		// relacionar este método com o método realizarEntrega
-
+		// precisa-se saber o endereço da biblioteca que fez o pedido
+		// e do usuário que fará a doação para que o usuário entregador
+		// possa entregar a doação.
 	}
 
 	public void gerarDoacao() {
