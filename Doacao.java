@@ -1,4 +1,4 @@
-package classes.modelo.atividades;
+package classes;
 
 import java.util.ArrayList;
 
