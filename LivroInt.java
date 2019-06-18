@@ -5,7 +5,7 @@ import java.util.List;
 import classes.Sistema;
 import classes.modelo.Biblioteca;
 
-public class LivroInt {
+public class LivroInt extends Atividade {
 	
 	public static void buscarLivro() {
 		System.out.println("Bem-vindo(a)! Digite o titulo do livro que deseja pedir:");
