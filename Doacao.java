@@ -49,6 +49,9 @@ public class Doacao extends Atividade {
 		// precisa-se saber o endereço da biblioteca que fez o pedido
 		// e do usuário que fará a doação para que o usuário entregador
 		// possa entregar a doação.
+		// o processo de doação é pré-iniciado quando há o "match" entre biblioteca, doador e entregador
+		// e começa de fato quando o entregador recolhe a doação no endereço do doador.
+		// Uma doação é concluída quando a entrega é finalizada.
 	}
 
 	public void gerarDoacao() {
