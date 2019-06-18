@@ -1,11 +1,9 @@
 package classes;
 
+import java.util.ArrayList;
+
 public abstract class Atividade {
-	private String nome;
+	public static ArrayList<String> registroAtividade = new ArrayList<String>();
 	
-	public abstract boolean buscaLivro();
-	public abstract void doaLivro();
-	public abstract boolean entregaLivro();
-	public abstract void pedeLivro();
-	public abstract void recebeLivro();
+	 public abstract void registrarAtividade(String atividade);
 }
