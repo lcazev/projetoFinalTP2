@@ -1,4 +1,4 @@
-package classes.modelo;
+package classes;
 
 public class Endereco {
     private String logadouro;
@@ -13,10 +13,6 @@ public class Endereco {
         this.setComplemento(complemento);
         this.setBairro(bairro);
         this.setCidade(cidade);
-    }
-
-    public String getLogadouro() {
-        return logadouro;
     }
 
     public String getLogadouro() {
@@ -65,4 +61,3 @@ public class Endereco {
     }
    
 }
-
