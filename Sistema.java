@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Sistema {
-	public class Sistema {
 	public static Scanner entrada = new Scanner(System.in);
 	public static Bibliotecas bibliotecas = new Bibliotecas();
 
