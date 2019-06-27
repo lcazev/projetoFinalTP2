@@ -59,7 +59,11 @@ public class Usuario {
     }
     
     public String getEndereco() {
-        return this.endereco.getEndCompleto();
+        return this.endereco.getEndCompleto();//para passar o endereco ao entregador
+    }
+    
+    public String getBairro() {
+    	return this.endereco.getBairro();//para compararmos os bairros
     }
 
     
