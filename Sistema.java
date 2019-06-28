@@ -4,110 +4,103 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Sistema {
-	public static Scanner entrada = new Scanner(System.in);
-	public static Bibliotecas bibliotecas = new Bibliotecas();
+	static Scanner entrada = new Scanner(System.in);
 
-	public static void main(String[] args) {
-		MenuInt.apresentarMenu();
-	}
-}
-
-	public static void pedirLivro() {
-		System.out.println("Bem-vindo(a)! Digite o titulo do livro que deseja pedir:");
-		entrada.nextLine();
-		String titulo = entrada.nextLine();
-		obterLivroPorTitulo(titulo);
-
-	}
-
-	public static void obterLivroPorTitulo(String livro) {
-		for (int i = 0; i < bibliotecas.size(); i++) {
-			if (bibliotecas.get(i).getCatalogo().contains(livro)) {
-				System.out.println("Este livro está disponivel na biblioteca "+bibliotecas.get(i).getNome()+" no endereco "+
-						bibliotecas.get(i).getEndereco());//add endereco
-				//criar um metodo em endereco pra retornar uma string com o end completo
-				//e adicionar ao endereco da biblioteca acima
-			} else {
-				System.out.println("Livro nao encontrado. Redirecionando para pedidos"); 
-				
-			}
-		}
-	}
-	public static void cadastrarUsuario() {
-
-	}
-
-	public static void cadastrarBiblioteca() {
-		System.out.println("Digite o nome da biblioteca:");
-		entrada.nextLine();
-		String nome = entrada.nextLine();
-		System.out.println("Digite a rua da biblioteca:");
-		String rua = entrada.nextLine();
-		System.out.println("Digite o numero:");
-		int numero = entrada.nextInt();
-		System.out.println("Digite o complemento:");
-		entrada.nextLine();
-		String complemento = entrada.nextLine();
-		System.out.println("Digite o bairro:");
-		String bairro = entrada.nextLine();
-		System.out.println("Digite a cidade:");
-		String cidade = entrada.nextLine();
-		System.out.println("Digite o email da biblioteca:");
-		String email = entrada.nextLine();
-		ArrayList<String> catalogo = new ArrayList<String>();
-
-		Endereco end = new Endereco(rua, numero, complemento, bairro, cidade);
-		System.out.println("Adicione os titulos ao catalogo. Para parar, digite 0: ");
-		while (true) {
-			System.out.println("Adicione titulo:");
-			String titulo = entrada.nextLine();
-			if (titulo.equals("0")) {
-				break;
-			} else {
-				catalogo.add(titulo);
-			}
-		}
-		bibliotecas.add(new Biblioteca(nome, end, email, catalogo));
-		menu();
-		
-	}
-
-	public static void avaliarEntrega() {
-
-	}
+	static ArrayList<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();// arquivo com todas as bibs
 
 	public static void menu() {
-		System.out.println("Você é:");
-		System.out.println("1) Usuario 2)Biblioteca");
-		int opcao = entrada.nextInt();
-		switch (opcao) {
+		System.out.println("Bem vindo ao BookSmart! Selecione uma opcao:");
+		System.out.println("1) Cadastrar usuario");
+		System.out.println("2) Cadastrar biblioteca");
+		System.out.println("3) Entrar como usuario");// acho que aqui direciona pro ambiente de user comum, temos que
+														// diferenciar do entregador
+		System.out.println("4) Entrar como biblioteca");
+		int opcaoMenu = entrada.nextInt();
+		switch (opcaoMenu) {
 		case 1:
-			System.out.println("1) Cadastrar usuario ou 2) Pedir livro");
-			opcao = entrada.nextInt(); // tratar caso de numero errado ou letra
-			switch (opcao) {
-			case 1:
-				cadastrarUsuario();
-			case 2:
-				pedirLivro();
-				break;
-			}
-		case 2:
-			System.out.println("1) Cadastrar biblioteca ou 2) Avaliar entrega");
-			opcao = entrada.nextInt();
-			switch (opcao) {
-			case 1:
-				cadastrarBiblioteca();
-			case 2:
-				avaliarEntrega();
-			}
-		
+			cadastrarUsuario();
+		case 2: // quero cadastrar como usuario e adicionar na lista de bibliotecas. dificuldade
+				// fácil
+		case 3: // quero criar um ambiente de biblioteca assim como tem o dos usuarios
+		}
 	}
-	}
-	// montando uma interface simples para testar o funcionamento
-		
-	public static void main(String[] args) {
-		menu();
 
+	public static void cadastrarUsuario() {
+		System.out.println("Digite o nome: ");
+		String nome = entrada.nextLine();
+		entrada.nextLine();
+		System.out.println("Digite seu endereco:");
+		System.out.println("Logadouro: ");
+		String logadouro = entrada.nextLine();
+		System.out.println("Numero: ");
+		int numero = entrada.nextInt();
+		System.out.println("Complemento: ");
+		String complemento = entrada.nextLine();
+		entrada.nextLine();
+		System.out.println("Bairro: ");
+		String bairro = entrada.nextLine();
+		System.out.println("Cidade:");
+		String cidade = entrada.nextLine();
+		System.out.println("Email");
+		String email = entrada.nextLine();
+		System.out.println("Escolha uma senha");
+		String senha = entrada.nextLine();
+
+		Usuario.usuarios
+				.add(new Usuario(nome, new Endereco(logadouro, numero, complemento, bairro, cidade), email, senha));
+		System.out.println("Cadastrado com sucesso! Fazer login: ");
+		entrar();
+	}
+
+	public static boolean entrar() {
+		System.out.println("Digite seu email:");
+		String email = entrada.nextLine();
+		System.out.println("Digite sua senha");
+		String senha = entrada.nextLine();
+		for (Usuario user : Usuario.usuarios) {
+			if (user.getEmail().equals(email) && user.getSenha().equals(senha)) {
+				if (user.isEhEntregador() == false) {
+					ambienteUser(user);
+				} else {
+					// quero fazer com que esse mesmo user se torne um parametro entregador. sera
+					// que tem como?
+				}
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static void ambienteUser(Usuario usuario) {
+
+		System.out.println("Ola! O que deseja fazer?");
+		System.out.println("1) Doar livro");
+		System.out.println("2) Tornar-se um entregador");
+		int opcaoComum = entrada.nextInt();
+		switch (opcaoComum) {
+		case 1: //ainda nao implementei
+		case 2:
+			usuario.setEhEntregador(true);
+			System.out.println("Obrigado por se voluntariar!");
 		}
 
 	}
+
+	public void ambienteEntregador(Entregador entregador) {
+		System.out.println("Ola! O que deseja fazer?");
+		System.out.println("1) Doar livro");
+		System.out.println("2) Realizar entrega");
+		int opcaoEntregador = entrada.nextInt();
+		switch (opcaoEntregador) {
+		case 1:
+		case 2:
+			System.out.println("Aqui estao suas entregas pendentes:");
+			System.out.println(entregador.entregasPendentes.toString());
+		}
+	}
+
+	public static void main(String[] args) {
+		menu();
+	}
+
+}
