@@ -1,0 +1,42 @@
+Laryssa Azevedo
+Rua General Roca
+350
+apto 301
+Tijuca
+laryssa.azevedo@uniriotec.br
+123456
+
+Eduardo Coelho
+Rua São Luiz Gonzaga
+1964
+apto 404
+São Cristóvão
+Rio de Janeiro
+eduardo.coelho@uniriotec.br
+123456
+
+Luiza Agostinho
+Rua Budapeste
+66
+casa 4
+Ilha do Governador
+luiza.agostinho@uniriotec.br
+123456
+
+Guilherme Briggs
+Rua Conde de Bonfim
+1568
+casa 8
+Tijuca
+Rio de Janeiro
+guilherme.briggs@dublapedia.com.br
+123456
+
+John Ronald Reuel Tolkien
+Rua Baker
+221
+casa
+Westminster
+Londres
+sherlock.holmes@brabo.uk
+221221
