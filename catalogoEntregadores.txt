@@ -1,8 +1,8 @@
-Joãozinho das Candongas
+JoÃ£ozinho das Candongas
 Rua Pereira Lopes
 123
 casa 10
-São Cristóvão
+6
 Rio de Janeiro
 joaozinho.candongas@gmail.com
 123456
@@ -17,7 +17,7 @@ Seninha Barramento
 Rua dos Prazeres
 666
 casa 1001
-Gávea
+9
 Rio de Janeiro
 seninha.barramento@hotmail.com
 123456
