@@ -52,23 +52,23 @@ public class Sistema {
 		entrar();
 	}
 
-	public static boolean entrar() {
+	public static void entrar() {
 		System.out.println("Digite seu email:");
 		String email = entrada.nextLine();
 		System.out.println("Digite sua senha");
 		String senha = entrada.nextLine();
 		for (Usuario user : Usuario.usuarios) {
-			if (user.getEmail().equals(email) && user.getSenha().equals(senha)) {
-				if (user.isEhEntregador() == false) {
-					ambienteUser(user);
+			for (Entregador entregador : Entregador.voluntariosEntrega) {
+				if (user.getEmail().equals(email) && user.getSenha().equals(senha)) {
+						ambienteUser(user);
+					} else if(entregador.getEmail().equals(email) && entregador.getSenha().equals(senha)) {
+						ambienteUser(entregador);
 				} else {
-					// quero fazer com que esse mesmo user se torne um parametro entregador. sera
-					// que tem como?
+					System.out.println("Login ou senha invalidos! Tente novamente: ");
+					entrar();
 				}
-				return true;
 			}
 		}
-		return false;
 	}
 
 	public static void ambienteUser(Usuario usuario) {
