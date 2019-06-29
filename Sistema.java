@@ -1,4 +1,4 @@
-package classes;
+package bookSmart;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,8 +19,8 @@ public class Sistema {
 		switch (opcaoMenu) {
 		case 1:
 			cadastrarUsuario();
-		case 2: // quero cadastrar como usuario e adicionar na lista de bibliotecas. dificuldade
-				// fácil
+		case 2:
+			cadastrarUsuario();
 		case 3: // quero criar um ambiente de biblioteca assim como tem o dos usuarios
 		}
 	}
@@ -45,11 +45,32 @@ public class Sistema {
 		String email = entrada.nextLine();
 		System.out.println("Escolha uma senha");
 		String senha = entrada.nextLine();
+		System.out.println("1) CADASTRAR COMO USUARIO, 2) CADASTRAR COMO BIBLIOTECA ");
+		int cadastroOpcao = entrada.nextInt();
+		switch (cadastroOpcao) {
+		case 1:
+			Usuario.usuarios
+					.add(new Usuario(nome, new Endereco(logadouro, numero, complemento, bairro, cidade), email, senha));
+			System.out.println(" Usuario cadastrado com sucesso! Fazer login: ");
+			entrar();
+		case 2:
+			ArrayList<Livro> cadastroCatalogo = new ArrayList<Livro>();
+			System.out.println("Adicione os titulos ao seu catalogo. Para parar, digite 0: ");
+			while (true) {
+				System.out.println("Adicione titulo:");
+				String titulo = entrada.nextLine();
+				System.out.println("Adicione autor:");
+				String autor = entrada.nextLine();
+				if (titulo.equals("0")) {
+					break;
+				} else {
+					cadastroCatalogo.add(new Livro(titulo, autor));
+				}
+			}
+			Biblioteca.bibliotecasSistema.add(new Biblioteca(nome,
+					new Endereco(logadouro, numero, complemento, bairro, cidade), email, senha, cadastroCatalogo));
+		}
 
-		Usuario.usuarios
-				.add(new Usuario(nome, new Endereco(logadouro, numero, complemento, bairro, cidade), email, senha));
-		System.out.println("Cadastrado com sucesso! Fazer login: ");
-		entrar();
 	}
 
 	public static void entrar() {
@@ -59,13 +80,17 @@ public class Sistema {
 		String senha = entrada.nextLine();
 		for (Usuario user : Usuario.usuarios) {
 			for (Entregador entregador : Entregador.voluntariosEntrega) {
-				if (user.getEmail().equals(email) && user.getSenha().equals(senha)) {
+				for (Biblioteca biblioteca : Biblioteca.bibliotecasSistema) {
+					if (user.getEmail().equals(email) && user.getSenha().equals(senha)) {
 						ambienteUser(user);
-					} else if(entregador.getEmail().equals(email) && entregador.getSenha().equals(senha)) {
+					} else if (entregador.getEmail().equals(email) && entregador.getSenha().equals(senha)) {
 						ambienteUser(entregador);
-				} else {
-					System.out.println("Login ou senha invalidos! Tente novamente: ");
-					entrar();
+					} else if (biblioteca.getEmail().equals(email) && biblioteca.getSenha().equals(senha)) {
+						ambienteUser(biblioteca);
+					} else {
+						System.out.println("Login ou senha invalidos! Tente novamente: ");
+						entrar();
+					}
 				}
 			}
 		}
@@ -78,7 +103,7 @@ public class Sistema {
 		System.out.println("2) Tornar-se um entregador");
 		int opcaoComum = entrada.nextInt();
 		switch (opcaoComum) {
-		case 1: //ainda nao implementei
+		case 1:
 		case 2:
 			usuario.setEhEntregador(true);
 			System.out.println("Obrigado por se voluntariar!");
@@ -86,7 +111,7 @@ public class Sistema {
 
 	}
 
-	public void ambienteEntregador(Entregador entregador) {
+	public static void ambienteUser(Entregador entregador) {
 		System.out.println("Ola! O que deseja fazer?");
 		System.out.println("1) Doar livro");
 		System.out.println("2) Realizar entrega");
@@ -96,6 +121,22 @@ public class Sistema {
 		case 2:
 			System.out.println("Aqui estao suas entregas pendentes:");
 			System.out.println(entregador.entregasPendentes.toString());
+		}
+	}
+	
+	public static void ambienteUser(Biblioteca biblioteca) {
+		System.out.println("Ola! O que deseja fazer?");
+		System.out.println("1) Pedir livro");
+		System.out.println("2) Confirmar o recebimento de um livro");
+		int opcaoBiblioteca = entrada.nextInt();
+		switch(opcaoBiblioteca) {
+		case 1: System.out.println("Digite o titulo do livro: ");
+		String titulo = entrada.nextLine();
+		System.out.println("Digite o autor do livro: ");
+		String autor = entrada.nextLine();
+			new Pedido(biblioteca, new Livro(titulo, autor)); 
+		case 2: biblioteca.selecionarLivrosPedidos();
+		System.out.println("Livro recebido com sucesso!");
 		}
 	}
 
