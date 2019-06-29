@@ -1,25 +1,33 @@
-package classes;
-
+package bookSmart;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Biblioteca extends Usuario {
 	static Scanner entrada = new Scanner (System.in);
 	static ArrayList<Biblioteca> bibliotecasSistema = new ArrayList<Biblioteca>();
-    private ArrayList<String> livrosRecebidos;
     private ArrayList<Livro> catalogo;
+    private ArrayList<Pedido> livrosSolicitados;
     
 
-    public Biblioteca(String nome, Endereco endereco, String email, ArrayList<Livro> catalogo) {
-        super(nome, endereco, email);
-        //ArrayList<String> catalogo = new ArrayList<String>();
+    public Biblioteca(String nome, Endereco endereco, String email, String senha, ArrayList<Livro> catalogo) {
+        super(nome, endereco, email, senha);
         this.setCatalogo(catalogo);
         @SuppressWarnings("unused")
-        ArrayList<String> livrosRecebidos;
+        ArrayList<Pedido> livrosSolicitados = new ArrayList<Pedido>();;
     }
 
-    public ArrayList<String> getLivrosRecebidos() {
-        return livrosRecebidos;
+    public void selecionarLivrosPedidos() {//eu tenho plena consciencia que essa funcao ta feia que doi
+    	//se rodar a gente da um jeito de arrumar ela
+    	int i=1;
+       for(Pedido pedido : this.livrosSolicitados) {
+    	   System.out.println(i+pedido.getLivroPedido().getTitulo());
+    	   i++;
+       }
+       System.out.println("Digite o numero do livro que deseja selecionar: ");
+       int numLivro = entrada.nextInt();
+      for(int j=0; j<this.livrosSolicitados.size();j++) {
+    	  this.livrosSolicitados.remove(this.livrosSolicitados.get(numLivro-1));
+      }
     }
 
     public ArrayList<Livro> getCatalogo() {
@@ -29,47 +37,9 @@ public class Biblioteca extends Usuario {
     public void setCatalogo(ArrayList<Livro> catalogo) {
         this.catalogo = catalogo;
     }
-    public void cadastrarBiblioteca(Biblioteca biblioteca) {
-    	System.out.println("Digite o nome da biblioteca:");
-		entrada.nextLine();
-		String nome = entrada.nextLine();
-		System.out.println("Digite a rua da biblioteca:");
-		String rua = entrada.nextLine();
-		System.out.println("Digite o numero:");
-		int numero = entrada.nextInt();
-		System.out.println("Digite o complemento:");
-		entrada.nextLine();
-		String complemento = entrada.nextLine();
-		System.out.println("Digite o bairro:");
-		String bairro = entrada.nextLine();
-		System.out.println("Digite a cidade:");
-		String cidade = entrada.nextLine();
-		System.out.println("Digite o email da biblioteca:");
-		String email = entrada.nextLine();
-		ArrayList<String> catalogo = new ArrayList<String>();
 
-		Endereco end = new Endereco(rua, numero, complemento, bairro, cidade);
-		System.out.println("Adicione os titulos ao catalogo. Para parar, digite 0: ");
-		while (true) {
-			System.out.println("Adicione titulo:");
-			String titulo = entrada.nextLine();
-			if (titulo.equals("0")) {
-				break;
-			} else {
-				catalogo.add(titulo);
-			}
-		}
-    	bibliotecasSistema.add(biblioteca);
+    public void adicionarLivroCatalogo(Livro livro) {
+    	this.catalogo.add(livro);
     }
     
-    public static void obterLivroPorTitulo(String livro) {
-		for (int i = 0; i < bibliotecasSistema.size(); i++) {
-			if (bibliotecasSistema.get(i).getCatalogo().contains(livro)) {
-				System.out.println("Este livro está disponivel na biblioteca "+bibliotecasSistema.get(i).getNome());
-			} else {
-				System.out.println("Livro nao encontrado. Redirecionando para pedidos"); 
-				
-			}
-		}
-    }
 }
