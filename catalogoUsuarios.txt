@@ -7,10 +7,10 @@ laryssa.azevedo@uniriotec.br
 123456
 
 Eduardo Coelho
-Rua S„o Luiz Gonzaga
+Rua S√£o Luiz Gonzaga
 1964
 apto 404
-S„o CristÛv„o
+S√£o Crist√≥v√£o
 Rio de Janeiro
 eduardo.coelho@uniriotec.br
 123456
@@ -36,7 +36,7 @@ John Ronald Reuel Tolkien
 Rua Baker
 221
 casa
-Westminster
+Riachuelo
 Londres
 sherlock.holmes@brabo.uk
 221221
