@@ -5,6 +5,24 @@ import java.util.Scanner;
 
 public class Sistema {
 	static Scanner entrada = new Scanner(System.in);
+	
+	Scanner usuarios = new Scanner("catalogoUsuarios.txt");
+	
+	while(usuarios.hasnext()) {
+		Usuario.setNome(usuarios.nextLine());
+		Usuario.setEmail(usuarios.nextLine());
+		Usuario.setEndereco(usuarios.nextLine());
+		Usuario.setSenha(usuarios.nextLine());
+		// Usuario.usuarios.add(); fiquei na dúvida aqui se tem que adicionar
+		// à lista ou se isso já monta a lista
+		
+		// Fiquei com dúvida também no Usuario.setEndereco(usuarios.nextLine()),
+		// porque endereço se desdobra em vários campos
+		// e no arquivo tá um embaixo do outro
+		// logradouro
+		// numero
+		// etc
+	}
 
 	static ArrayList<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();// arquivo com todas as bibs
 
