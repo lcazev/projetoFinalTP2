@@ -13,7 +13,7 @@ public class Biblioteca extends Usuario {
         super(nome, endereco, email, senha);
         this.setCatalogo(catalogo);
         @SuppressWarnings("unused")
-        ArrayList<Pedido> livrosSolicitados = new ArrayList<Pedido>();;
+        ArrayList<Pedido> livrosSolicitados = new ArrayList<Pedido>();
     }
 
     public void selecionarLivrosPedidos() {//eu tenho plena consciencia que essa funcao ta feia que doi
@@ -25,9 +25,7 @@ public class Biblioteca extends Usuario {
        }
        System.out.println("Digite o numero do livro que deseja selecionar: ");
        int numLivro = entrada.nextInt();
-      for(int j=0; j<this.livrosSolicitados.size();j++) {
-    	  this.livrosSolicitados.remove(this.livrosSolicitados.get(numLivro-1));
-      }
+       this.livrosSolicitados.remove(this.livrosSolicitados.get(numLivro-1));
     }
 
     public ArrayList<Livro> getCatalogo() {
