@@ -46,10 +46,10 @@ public class Sistema {
 	public static void cadastrarUsuario() {
 		System.out.println("Digite o nome: ");
 		String nome = entrada.nextLine();
-		entrada.nextLine();
 		System.out.println("Digite seu endereco:");
 		System.out.println("Logadouro: ");
 		String logadouro = entrada.nextLine();
+		entrada.nextLine();
 		System.out.println("Numero: ");
 		int numero = entrada.nextInt();
 		System.out.println("Complemento: ");
