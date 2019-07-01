@@ -39,7 +39,7 @@ public class Sistema {
 			cadastrarUsuario();
 		case 2:
 			cadastrarUsuario();
-		case 3: // quero criar um ambiente de biblioteca assim como tem o dos usuarios
+		case 3: entrar();
 		}
 	}
 
