@@ -6,9 +6,9 @@ import java.util.Scanner;
 public class Sistema {
 	static Scanner entrada = new Scanner(System.in);
 	
-	Scanner usuarios = new Scanner("catalogoUsuarios.txt");
+	//Scanner usuarios = new Scanner("catalogoUsuarios.txt");
 	
-	while(usuarios.hasnext()) {
+	/*while(usuarios.hasnext()) {
 		Usuario.setNome(usuarios.nextLine());
 		Usuario.setEmail(usuarios.nextLine());
 		Usuario.setEndereco(usuarios.nextLine());
@@ -22,7 +22,7 @@ public class Sistema {
 		// logradouro
 		// numero
 		// etc
-	}
+	}*/
 
 	static ArrayList<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();// arquivo com todas as bibs
 
@@ -159,6 +159,11 @@ public class Sistema {
 	}
 
 	public static void main(String[] args) {
+	new Usuario("Laryssa Azevedo", new Endereco("Rua General Roca", 350, "apto 301", "Tijuca", "Rio de Janeiro"), "laryssa.azevedo@uniriotec.br", "123456");
+	new Usuario("Eduardo", new Endereco("Rua Voluntarios da Patria", 12, "s/n", "Botafogo", "Rio de Janeiro"), "eduardo.coelho@uniriotec.br", "123456");
+	new Usuario("Luiza Agostinho", new Endereco("Avenida Pasteur", 100, "apto 1010", "Urca", "Rio de Janeiro"), "luiza.agostinho@uniriotec.br", "123456");
+	new Usuario("Maria Silva", new Endereco("Rua Marques de Sao Vicente", 925, "apto 904", "Gavea", "Rio de Janeiro"), "maria.silva@uniriotec.br", "123456");
+	new Usuario("Julio Sousa", new Endereco("Rua Quito", 10, "casa", "Penha", "Rio de Janeiro"), "julio.sousa@uniriotec.br", "123456");
 		menu();
 	}
 
